@@ -1,8 +1,8 @@
-package com.edu.task1.entity.repair;
+package com.edu.task1.entity;
 
-import com.edu.task1.entity.carservice.CarService;
-import com.edu.task1.entity.machine.Machine;
-import com.edu.task1.entity.mechanic.Mechanic;
+import com.edu.task1.entity.CarService;
+import com.edu.task1.entity.Machine;
+import com.edu.task1.entity.Mechanic;
 
 import java.math.BigDecimal;
 import java.util.Date;

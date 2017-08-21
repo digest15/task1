@@ -1,4 +1,4 @@
-package com.edu.task1.entity.mechanic;
+package com.edu.task1.entity;
 
 import java.math.BigDecimal;
 

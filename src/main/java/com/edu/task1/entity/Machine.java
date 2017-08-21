@@ -1,6 +1,4 @@
-package com.edu.task1.entity.machine;
-
-import com.edu.task1.entity.Color;
+package com.edu.task1.entity;
 
 import java.util.Date;
 

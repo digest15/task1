@@ -1,4 +1,4 @@
-package com.edu.task1.entity.carservice;
+package com.edu.task1.entity;
 
 /**
  * Created by damager on 17.08.17.
