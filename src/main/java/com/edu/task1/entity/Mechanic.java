@@ -1,11 +1,12 @@
 package com.edu.task1.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * Created by damager on 17.08.17.
  */
-public class Mechanic {
+public class Mechanic implements Serializable {
     private String name;
     private String lastName;
     private BigDecimal salary;

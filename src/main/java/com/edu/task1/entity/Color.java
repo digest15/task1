@@ -1,6 +1,8 @@
 package com.edu.task1.entity;
 
-public class Color {
+import java.io.Serializable;
+
+public class Color implements Serializable {
     private String rgb;
     private String name;
 

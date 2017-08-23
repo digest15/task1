@@ -9,9 +9,11 @@ public abstract class AbstractDao<T> implements GenericDao<T> {
     public AbstractDao(PersisterDao persister) {
         this.persister = persister;
         if (this.list == null) {
-            writeToFile();
+            readFromFile();
         }
     }
+
+    protected abstract String getFileName();
 
     public abstract T create();
 
@@ -33,10 +35,10 @@ public abstract class AbstractDao<T> implements GenericDao<T> {
     }
 
     public void saveToFile() {
-        persister.save(this.list);
+        persister.save(this.list, getFileName());
     }
 
-    public void writeToFile() {
-        this.list = persister.load();
+    public void readFromFile() {
+        this.list = persister.load(getFileName());
     }
 }

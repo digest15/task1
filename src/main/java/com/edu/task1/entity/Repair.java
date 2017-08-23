@@ -4,13 +4,14 @@ import com.edu.task1.entity.CarService;
 import com.edu.task1.entity.Machine;
 import com.edu.task1.entity.Mechanic;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 /**
  * Created by damager on 17.08.17.
  */
-public class Repair {
+public class Repair implements Serializable {
     private Date dateTime;
     private CarService carServise;
     private Machine machine;

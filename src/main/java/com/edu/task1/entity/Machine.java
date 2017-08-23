@@ -1,8 +1,9 @@
 package com.edu.task1.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Machine {
+public abstract class Machine implements Serializable {
     private String namePicking;
     private String vin;
     private Date releaseYear;

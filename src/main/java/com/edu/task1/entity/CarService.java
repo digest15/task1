@@ -1,9 +1,12 @@
 package com.edu.task1.entity;
 
+
+import java.io.Serializable;
+
 /**
  * Created by damager on 17.08.17.
  */
-public class CarService {
+public class CarService implements Serializable {
     private String name;
     private String address;
     private int openingTime;

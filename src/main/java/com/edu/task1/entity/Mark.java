@@ -1,6 +1,8 @@
 package com.edu.task1.entity;
 
-public class Mark {
+import java.io.Serializable;
+
+public class Mark implements Serializable {
     private String manufacturer;
 
     public String getManufacturer() {

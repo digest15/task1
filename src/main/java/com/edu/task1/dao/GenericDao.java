@@ -14,5 +14,7 @@ public interface GenericDao<T> {
 
     public void saveToFile();
 
-    public void writeToFile();
+    public void readFromFile();
+
+    public List<T> getAll();
 }
