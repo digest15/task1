@@ -13,9 +13,12 @@ public abstract class AbstractDao<T> implements GenericDao<T> {
         }
     }
 
-    protected abstract String getFileName();
+    @Override
+    public T getByIndex(int index) {
+        return this.list.get(index);
+    }
 
-    public abstract T create();
+    protected abstract String getFileName();
 
     public void add(T object) {
         this.list.add(object);

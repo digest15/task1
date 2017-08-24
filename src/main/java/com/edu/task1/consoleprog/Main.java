@@ -1,4 +1,4 @@
-package com.edu.task1.main;
+package com.edu.task1.consoleprog;
 
 import com.edu.task1.dao.*;
 import com.edu.task1.entity.*;
@@ -8,13 +8,16 @@ import com.edu.task1.entity.*;
  */
 public class Main {
     public static void main(String[] args) {
-        FactoryDao factoryDao = new SerializationApiFactoryDao();
+        FactoryDao serializationApiFactoryDao = new SerializationApiFactoryDao();
+        fill(serializationApiFactoryDao);
+    }
 
+    private static void fill(FactoryDao factoryDao) {
         //CarService
-        CarServiceDao carServiceDao = factoryDao.getCarServiceDao();
+        GenericDao carServiceDao = factoryDao.getCarServiceDao();
         if (carServiceDao.getAll().size() == 0) {
             //1
-            CarService carService = carServiceDao.create();
+            CarService carService = (CarService)carServiceDao.create();
             carService.setAddress("г.Иркутск, Александровское шоссе 11 км");
             carService.setName("Александровское");
             carService.setOpeningTime(10);
@@ -22,7 +25,7 @@ public class Main {
             carServiceDao.add(carService);
 
             //2
-            carService = carServiceDao.create();
+            carService = (CarService)carServiceDao.create();
             carService.setAddress("г.Иркутск, ул. Ширямова 10");
             carService.setName("На Ширямва");
             carService.setOpeningTime(9);
@@ -34,45 +37,45 @@ public class Main {
         }
 
         //Color
-        ColorDao colorDao = factoryDao.getColorDao();
+        GenericDao colorDao = factoryDao.getColorDao();
         if (colorDao.getAll().size() == 0) {
             //1
-            Color color = colorDao.create();
+            Color color = (Color)colorDao.create();
             color.setName("Красный");
             color.setRgb("255 0 0");
 
             //2
-            color = colorDao.create();
+            color = (Color)colorDao.create();
             color.setName("Оранжевый");
             color.setRgb("255 128 0");
 
             //3
-            color = colorDao.create();
+            color = (Color)colorDao.create();
             color.setName("Синий");
             color.setRgb("0 0 255");
 
             //4
-            color = colorDao.create();
+            color = (Color)colorDao.create();
             color.setName("Фиолетовый");
             color.setRgb("128 0 255");
 
             //5
-            color = colorDao.create();
+            color = (Color)colorDao.create();
             color.setName("Белый");
             color.setRgb("255 255 255");
 
             //6
-            color = colorDao.create();
+            color = (Color)colorDao.create();
             color.setName("Черный");
             color.setRgb("0 0 0");
 
             //7
-            color = colorDao.create();
+            color = (Color)colorDao.create();
             color.setName("Серый");
             color.setRgb("128 128 128");
 
             //8
-            color = colorDao.create();
+            color = (Color)colorDao.create();
             color.setName("Зеленый");
             color.setRgb("0 255 0");
 
@@ -81,77 +84,105 @@ public class Main {
         }
 
         //Mark
-        MarkDao markDao = factoryDao.getMarkDao();
+        GenericDao markDao = factoryDao.getMarkDao();
         if (markDao.getAll().size() == 0) {
             //1
-            Mark mark = markDao.create();
+            Mark mark = (Mark)markDao.create();
             mark.setManufacturer("Audi");
 
             //2
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("BMW");
 
             //3
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Chevrolet");
 
             //4
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Ford");
 
             //5
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Honda");
 
             //6
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Hyundai");
 
             //7
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Lexus");
 
             //8
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Kia");
 
             //9
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Mazda");
 
             //10
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Mercedes-Benz");
 
             //11
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Mitsubishi");
 
             //12
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Nissan");
 
             //13
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Opel");
 
             //14
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Toyota");
 
             //15
-            mark = markDao.create();
+            mark = (Mark)markDao.create();
             mark.setManufacturer("Лада");
+
+            //16
+            mark = (Mark)markDao.create();
+            mark.setManufacturer("Скания");
+
+            //17
+            mark = (Mark)markDao.create();
+            mark.setManufacturer("Камаз");
+
+            //16
+            mark = (Mark)markDao.create();
+            mark.setManufacturer("Татра");
+
+            //18
+            mark = (Mark)markDao.create();
+            mark.setManufacturer("Маз");
+
+            //19
+            mark = (Mark)markDao.create();
+            mark.setManufacturer("Ман");
+
+            //20
+            mark = (Mark)markDao.create();
+            mark.setManufacturer("Лиаз");
+
+            //21
+            mark = (Mark)markDao.create();
+            mark.setManufacturer("ГАЗ");
 
             //save
             markDao.saveToFile();
         }
 
         //Car
-        CarDao carDao = factoryDao.getCarDao();
+        GenericDao carDao = factoryDao.getCarDao();
         if (carDao.getAll().size() == 0) {
             //1
-            Car car = carDao.create();
+            Car car = (Car)carDao.create();
             //car.
         }
     }

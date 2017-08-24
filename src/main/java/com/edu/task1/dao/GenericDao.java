@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface GenericDao<T> {
 
-    public T create();
+    public <T> T create();
 
     public void add(T object);
 
@@ -17,4 +17,6 @@ public interface GenericDao<T> {
     public void readFromFile();
 
     public List<T> getAll();
+
+    public T getByIndex(int index);
 }
