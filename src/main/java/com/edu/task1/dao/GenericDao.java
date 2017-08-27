@@ -19,4 +19,6 @@ public interface GenericDao<T> {
     public List<T> getAll();
 
     public T getByIndex(int index);
+
+    public int getCount();
 }

@@ -20,7 +20,7 @@ public class SerializationApiPersisterDao implements PersisterDao {
         } catch (InvalidPathException e) {
             System.err.println("Oшибкa указания пути " + fileName + e);
         } catch (IOException e) {
-            System.err.println("Oшибкa в вода- вывода : " + fileName + e);
+            System.err.println("Oшибкa в вода-вывода : " + fileName + e);
         }
     }
 

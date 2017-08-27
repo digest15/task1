@@ -14,6 +14,11 @@ public abstract class AbstractDao<T> implements GenericDao<T> {
     }
 
     @Override
+    public int getCount() {
+        return list.size();
+    }
+
+    @Override
     public T getByIndex(int index) {
         return this.list.get(index);
     }
