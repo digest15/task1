@@ -1,0 +1,3 @@
+com.edu.task1.entity.CarService
+(name=Александровское;address=г.Иркутск, Александровское шоссе 11 км;openingTime=10;closingTime=20;)
+(name=На Ширямва;address=г.Иркутск, ул. Ширямова 10;openingTime=9;closingTime=19;)

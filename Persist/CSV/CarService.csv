@@ -1,0 +1,4 @@
+com.edu.task1.entity.CarService
+name;address;openingTime;closingTime
+Александровское;г.Иркутск, Александровское шоссе 11 км;10;20
+На Ширямва;г.Иркутск, ул. Ширямова 10;9;19

@@ -1,0 +1,11 @@
+com.edu.task1.entity.Mechanic
+(name=Иван;lastName=Иванов;salary=10000;)
+(name=Петя;lastName=Петров;salary=20000;)
+(name=Саша;lastName=Сидоров;salary=30000;)
+(name=Дарма;lastName=Бельдыев;salary=20000;)
+(name=Вася;lastName=Пупкин;salary=5000;)
+(name=Миша;lastName=Малкин;salary=30000;)
+(name=Миша;lastName=Палкин;salary=40000;)
+(name=Федор;lastName=Федоров;salary=50000;)
+(name=Степан;lastName=Степанов;salary=25000;)
+(name=Кеша;lastName=Кротов;salary=35000;)
