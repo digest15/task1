@@ -9,7 +9,7 @@ public class MehanicDao extends AbstractDao<Mechanic> {
 
     @Override
     protected String getFileName() {
-        return "./Persist/Mehanics";
+        return "Mehanic";
     }
 
     @Override

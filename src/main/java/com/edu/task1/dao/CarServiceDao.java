@@ -10,7 +10,7 @@ public class CarServiceDao extends AbstractDao<CarService> {
 
     @Override
     protected String getFileName() {
-        return "./Persist/CarServices";
+        return "CarService";
     }
 
     @Override

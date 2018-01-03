@@ -9,7 +9,7 @@ public class BusDao extends AbstractDao<Bus> {
 
     @Override
     protected String getFileName() {
-        return "./Persist/Buses";
+        return "Bus";
     }
 
     @Override

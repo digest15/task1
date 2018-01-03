@@ -9,7 +9,7 @@ public class RepairDao extends AbstractDao<Repair> {
 
     @Override
     protected String getFileName() {
-        return "./Persist/Repairs";
+        return "Repair";
     }
 
     @Override

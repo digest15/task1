@@ -1,18 +1,26 @@
 package com.edu.task1.consoleprog;
 
-import com.edu.task1.consoleprog.threads.*;
+import com.edu.task1.threads.*;
 import com.edu.task1.dao.*;
 import com.edu.task1.entity.*;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * Created by damager on 17.08.17.
  */
 public class Main {
     public static void main(String[] args) {
-        FactoryDao serializationApiFactoryDao = new SerializationApiFactoryDao();
-        fill(serializationApiFactoryDao);
+//        FactoryDao Factory = new SerializationApiFactoryDao();
+//        fill(Factory);
+
+//        FactoryDao Factory = new CsvFactoryDao();
+//        fill(Factory);
+
+        FactoryDao Factory = new MyTxtFormatSerializationFactoryDao();
+        fill(Factory);
+
     }
 
     private static void fill(FactoryDao factoryDao) {
@@ -24,9 +32,11 @@ public class Main {
 
             colorThread.getThread().join();
             markThread.getThread().join();
-            CarThread carThread = new CarThread(factoryDao, colorThread.getDao(), markThread.getDao());
-            BusThread busThread = new BusThread(factoryDao, colorThread.getDao(), markThread.getDao());
-            TruckThread truckThread = new TruckThread(factoryDao, colorThread.getDao(), markThread.getDao());
+
+            GenericDao colorDao = colorThread.getDao();
+            CarThread carThread = new CarThread(factoryDao, colorDao, markThread.getDao());
+            BusThread busThread = new BusThread(factoryDao, colorDao, markThread.getDao());
+            TruckThread truckThread = new TruckThread(factoryDao, colorDao, markThread.getDao());
 
             carServiceThread.getThread().join();
             mechanicTread.getThread().join();
@@ -34,7 +44,7 @@ public class Main {
             busThread.getThread().join();
             truckThread.getThread().join();
 
-            ArrayList<Machine> machineList = new ArrayList<>();
+            List<Machine> machineList = new ArrayList<>();
             machineList.addAll(carThread.getDao().getAll());
             machineList.addAll(busThread.getDao().getAll());
             machineList.addAll(truckThread.getDao().getAll());
@@ -44,7 +54,9 @@ public class Main {
         }
     }
 
-    /*private static void fill(FactoryDao factoryDao) {
+    private static void fill1(FactoryDao factoryDao) {
+        Random random = new Random(new Date().getTime());
+
         //CarService
         GenericDao carServiceDao = factoryDao.getCarServiceDao();
         if (carServiceDao.getAll().size() == 0) {
@@ -55,6 +67,8 @@ public class Main {
             carService.setOpeningTime(10);
             carService.setClosingTime(20);
             carServiceDao.add(carService);
+
+
 
             //2
             carService = (CarService)carServiceDao.create();
@@ -253,6 +267,15 @@ public class Main {
                 car.setReleaseYear(new Date());
                 car.setVin(String.valueOf(random.nextLong()));
                //ThreadLocalRandom.current().nextInt();
+
+//                car.colors = colorDao.getAll();
+//
+//                String[] strings = {"1", "2", "3", "4", "5"};
+//                car.strings = Arrays.asList(strings);
+//
+//                int[] ints = {1, 2, 3, 4, 5};
+//                car.ints = ints;
+
                 carDao.add(car);
             }
             carDao.saveToFile();
@@ -381,7 +404,7 @@ public class Main {
         GenericDao repairDao = factoryDao.getRepairDao();
         if (repairDao.getCount() == 0) {
             Repair repair;
-            for (int i=0; i < 10000; i++) {
+            for (int i=0; i < 100000; i++) {
                 repair = (Repair) repairDao.create();
                 repair.setDateTime(new Date());
                 repair.setCarServise((CarService)carServiceDao.getByIndex(random.nextInt(1)));
@@ -393,5 +416,5 @@ public class Main {
             repairDao.saveToFile();
         }
 
-    }*/
+    }
 }

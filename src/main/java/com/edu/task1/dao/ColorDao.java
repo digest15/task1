@@ -9,7 +9,7 @@ public class ColorDao extends AbstractDao<Color> {
 
     @Override
     protected String getFileName() {
-        return "./Persist/Colors";
+        return "Color";
     }
 
     @Override

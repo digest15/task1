@@ -1,4 +1,4 @@
-package com.edu.task1.consoleprog.threads;
+package com.edu.task1.threads;
 
 import com.edu.task1.dao.FactoryDao;
 import com.edu.task1.dao.GenericDao;
@@ -22,25 +22,25 @@ public class CarThread extends AbstractEntityThread {
 
     @Override
     protected GenericDao createDao() {
-        return this.factoryDao.getCarDao();
+        return factoryDao.getCarDao();
     }
 
     @Override
     public void run() {
-        if (this.dao.getCount() == 0) {
+        if (dao.getCount() == 0) {
                 Car car;
             for (int i=0;i <=1000;i++) {
-                car = (Car) this.dao.create();
+                car = (Car) dao.create();
                 car.setNamePicking("Люкс");
-                car.setColor((Color)this.colorDao.getByIndex(random.nextInt(this.colorDao.getCount())));
+                car.setColor((Color)colorDao.getByIndex(random.nextInt(colorDao.getCount())));
                 car.setNumberPassengerSeats(5);
-                car.setMark((Mark)this.markDao.getByIndex(random.nextInt(this.markDao.getCount() - 7))); //Только легковые марки
+                car.setMark((Mark)markDao.getByIndex(random.nextInt(markDao.getCount() - 7))); //Только легковые марки
                 car.setReleaseYear(new Date());
                 car.setVin(String.valueOf(random.nextLong()));
                 //ThreadLocalRandom.current().nextInt();
-                this.dao.add(car);
+                dao.add(car);
             }
-            this.dao.saveToFile();
+            dao.saveToFile();
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.edu.task1.consoleprog.threads;
+package com.edu.task1.threads;
 
 import com.edu.task1.dao.FactoryDao;
 import com.edu.task1.dao.GenericDao;
@@ -23,25 +23,25 @@ public class TruckThread extends AbstractEntityThread {
 
     @Override
     protected GenericDao createDao() {
-        return this.factoryDao.getTruckDao();
+        return factoryDao.getTruckDao();
     }
 
     @Override
     public void run() {
-        if (this.dao.getCount() == 0) {
+        if (dao.getCount() == 0) {
             Truck truck;
             for (int i=0;i <=1000;i++) {
-                truck = (Truck) this.dao.create();
+                truck = (Truck) dao.create();
                 truck.setNamePicking("Люкс");
                 truck.setNumberAxle(random.nextInt(6) + 2);
-                truck.setColor((Color)this.colorDao.getByIndex(random.nextInt(this.colorDao.getCount())));
-                truck.setMark((Mark)this.markDao.getByIndex(random.nextInt(7)+15)); //Только грузовые и автобусы
+                truck.setColor((Color)colorDao.getByIndex(random.nextInt(colorDao.getCount())));
+                truck.setMark((Mark)markDao.getByIndex(random.nextInt(7)+15)); //Только грузовые и автобусы
                 truck.setReleaseYear(new Date());
                 truck.setVin(String.valueOf(random.nextLong()));
                 //ThreadLocalRandom.current().nextInt();
-                this.dao.add(truck);
+                dao.add(truck);
             }
-            this.dao.saveToFile();
+            dao.saveToFile();
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.edu.task1.consoleprog.threads;
+package com.edu.task1.threads;
 
 import com.edu.task1.dao.FactoryDao;
 import com.edu.task1.dao.GenericDao;
@@ -12,7 +12,7 @@ public abstract class AbstractEntityThread implements Runnable {
         this.factoryDao = factoryDao;
         this.dao = createDao();
         this.thread = new Thread(this, nameThread);
-        thread.start();
+        this.thread.start();
     }
 
     protected abstract GenericDao createDao();

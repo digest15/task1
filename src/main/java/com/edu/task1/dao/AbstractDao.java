@@ -6,11 +6,30 @@ public abstract class AbstractDao<T> implements GenericDao<T> {
     private List<T> list;
     private PersisterDao persister;
 
+
+    protected abstract String getFileName();
+
     public AbstractDao(PersisterDao persister) {
         this.persister = persister;
         if (this.list == null) {
             readFromFile();
         }
+    }
+
+    @Override
+    public void add(T object) {
+        list.add(object);
+    }
+
+    @Override
+    public void delete(T object) {
+
+    }
+
+    @Override
+    public void update(T object) {
+        int i = this.list.indexOf(object);
+        list.add(i, object);
     }
 
     @Override
@@ -20,33 +39,19 @@ public abstract class AbstractDao<T> implements GenericDao<T> {
 
     @Override
     public T getByIndex(int index) {
-        return this.list.get(index);
+        return list.get(index);
     }
 
-    protected abstract String getFileName();
-
-    public void add(T object) {
-        this.list.add(object);
-    }
-
-    public void delete(T object) {
-        this.delete(object);
-    }
-
-    public void update(T object) {
-        int i = this.list.indexOf(object);
-        this.list.add(i, object);
-    }
-
+    @Override
     public List<T> getAll() {
-        return this.list;
+        return list;
     }
 
     public void saveToFile() {
-        persister.save(this.list, getFileName());
+        persister.save(list, getFileName());
     }
 
     public void readFromFile() {
-        this.list = persister.load(getFileName());
+        list = persister.load(getFileName());
     }
 }

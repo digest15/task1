@@ -1,4 +1,4 @@
-package com.edu.task1.consoleprog.threads;
+package com.edu.task1.threads;
 
 import com.edu.task1.dao.FactoryDao;
 import com.edu.task1.dao.GenericDao;
@@ -11,30 +11,30 @@ public class CarServiceThread extends AbstractEntityThread {
 
     @Override
     protected GenericDao createDao() {
-        return this.factoryDao.getCarServiceDao();
+        return factoryDao.getCarServiceDao();
     }
 
     @Override
     public void run() {
-        if (this.dao.getCount() == 0) {
+        if (dao.getCount() == 0) {
             //1
             CarService carService = (CarService)this.dao.create();
             carService.setAddress("г.Иркутск, Александровское шоссе 11 км");
             carService.setName("Александровское");
             carService.setOpeningTime(10);
             carService.setClosingTime(20);
-            this.dao.add(carService);
+            dao.add(carService);
 
             //2
-            carService = (CarService)this.dao.create();
+            carService = (CarService)dao.create();
             carService.setAddress("г.Иркутск, ул. Ширямова 10");
             carService.setName("На Ширямва");
             carService.setOpeningTime(9);
             carService.setClosingTime(19);
-            this.dao.add(carService);
+            dao.add(carService);
 
             //save
-            this.dao.saveToFile();
+            dao.saveToFile();
         }
     }
 }

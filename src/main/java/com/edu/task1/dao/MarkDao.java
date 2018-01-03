@@ -9,7 +9,7 @@ public class MarkDao extends AbstractDao<Mark> {
 
     @Override
     protected String getFileName() {
-        return "./Persist/Marks";
+        return "Mark";
     }
 
     @Override

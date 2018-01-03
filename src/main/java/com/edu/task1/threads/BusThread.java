@@ -1,4 +1,4 @@
-package com.edu.task1.consoleprog.threads;
+package com.edu.task1.threads;
 
 import com.edu.task1.dao.FactoryDao;
 import com.edu.task1.dao.GenericDao;
@@ -23,26 +23,25 @@ public class BusThread extends AbstractEntityThread {
 
     @Override
     protected GenericDao createDao() {
-        return this.factoryDao.getBusDao();
+        return factoryDao.getBusDao();
     }
 
     @Override
     public void run() {
-        if (this.dao.getCount() == 0) {
-            Bus bus;
+        if (dao.getCount() == 0) {
             for (int i=0;i <=1000;i++) {
-                bus = (Bus) this.dao.create();
+                Bus bus = (Bus) dao.create();
                 bus.setNamePicking("Люкс");
-                bus.setColor((Color)this.colorDao.getByIndex(random.nextInt(this.colorDao.getCount())));
+                bus.setColor((Color)colorDao.getByIndex(random.nextInt(colorDao.getCount())));
                 bus.setNumberPassengerSeats(random.nextInt(20) + 20);
                 bus.setNumberPassengerStanding(random.nextInt(20) + 20);
-                bus.setMark((Mark)this.markDao.getByIndex(random.nextInt(7)+15)); //Только грузовые и автобусы
+                bus.setMark((Mark)markDao.getByIndex(random.nextInt(7)+15)); //Только грузовые и автобусы
                 bus.setReleaseYear(new Date());
                 bus.setVin(String.valueOf(random.nextLong()));
                 //ThreadLocalRandom.current().nextInt();
-                this.dao.add(bus);
+                dao.add(bus);
             }
-            this.dao.saveToFile();
+            dao.saveToFile();
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.edu.task1.consoleprog.threads;
+package com.edu.task1.threads;
 
 import com.edu.task1.dao.FactoryDao;
 import com.edu.task1.dao.GenericDao;
@@ -29,23 +29,23 @@ public class RepairThread extends AbstractEntityThread {
 
     @Override
     protected GenericDao createDao() {
-        return this.factoryDao.getRepairDao();
+        return factoryDao.getRepairDao();
     }
 
     @Override
     public void run() {
-        if (this.dao.getCount() == 0) {
+        if (dao.getCount() == 0) {
             Repair repair;
-            for (int i=0; i < 10000; i++) {
-                repair = (Repair) this.dao.create();
+            for (int i=0; i < 100000; i++) {
+                repair = (Repair) dao.create();
                 repair.setDateTime(new Date());
                 repair.setCarServise((CarService)carServiceDao.getByIndex(random.nextInt(1)));
                 repair.setMechanic((Mechanic)mechanicDao.getByIndex(random.nextInt(mechanicDao.getCount())));
                 repair.setMachine((Machine) machineList.get(random.nextInt(machineList.size())));
                 repair.setAmount(new BigDecimal(random.nextDouble()));
-                this.dao.add(repair);
+                dao.add(repair);
             }
-            this.dao.saveToFile();
+            dao.saveToFile();
         }
     }
 }
