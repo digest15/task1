@@ -1,0 +1,12 @@
+com.edu.task1.entity.Truck
+{"numberAxle":2,"capacity":0,"namePicking":"Люкс","vin":"542242659062501582","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"128 0 255","name":"Фиолетовый"},"mark":{"manufacturer":"Скания"}}
+{"numberAxle":2,"capacity":0,"namePicking":"Люкс","vin":"8402092938883251960","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"0 0 255","name":"Синий"},"mark":{"manufacturer":"Татра"}}
+{"numberAxle":4,"capacity":0,"namePicking":"Люкс","vin":"1153933020137259226","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"128 128 128","name":"Серый"},"mark":{"manufacturer":"Маз"}}
+{"numberAxle":3,"capacity":0,"namePicking":"Люкс","vin":"7032921773125490286","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"255 128 0","name":"Оранжевый"},"mark":{"manufacturer":"Татра"}}
+{"numberAxle":4,"capacity":0,"namePicking":"Люкс","vin":"6853738241756655037","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"255 128 0","name":"Оранжевый"},"mark":{"manufacturer":"Ман"}}
+{"numberAxle":2,"capacity":0,"namePicking":"Люкс","vin":"-2954198286628268769","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"0 255 0","name":"Зеленый"},"mark":{"manufacturer":"Ман"}}
+{"numberAxle":2,"capacity":0,"namePicking":"Люкс","vin":"-5092447553729346057","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"255 128 0","name":"Оранжевый"},"mark":{"manufacturer":"ГАЗ"}}
+{"numberAxle":4,"capacity":0,"namePicking":"Люкс","vin":"-6103835114029543617","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"128 128 128","name":"Серый"},"mark":{"manufacturer":"Ман"}}
+{"numberAxle":7,"capacity":0,"namePicking":"Люкс","vin":"2072789115410953252","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"0 0 0","name":"Черный"},"mark":{"manufacturer":"Маз"}}
+{"numberAxle":5,"capacity":0,"namePicking":"Люкс","vin":"2852898901915751956","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"255 255 255","name":"Белый"},"mark":{"manufacturer":"Татра"}}
+{"numberAxle":4,"capacity":0,"namePicking":"Люкс","vin":"1131587414694964949","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"255 255 255","name":"Белый"},"mark":{"manufacturer":"Камаз"}}

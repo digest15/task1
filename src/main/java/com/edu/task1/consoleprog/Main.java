@@ -18,8 +18,11 @@ public class Main {
 //        FactoryDao Factory = new CsvFactoryDao();
 //        fill(Factory);
 
-        FactoryDao Factory = new MyTxtFormatSerializationFactoryDao();
-        fill(Factory);
+//        FactoryDao Factory = new MyTxtFormatSerializationFactoryDao();
+//        fill(Factory);
+
+        FactoryDao Factory = new GsonFactoryDao();
+        fill1(Factory);
 
     }
 
@@ -67,8 +70,6 @@ public class Main {
             carService.setOpeningTime(10);
             carService.setClosingTime(20);
             carServiceDao.add(carService);
-
-
 
             //2
             carService = (CarService)carServiceDao.create();
@@ -258,7 +259,7 @@ public class Main {
         GenericDao carDao = factoryDao.getCarDao();
         if (carDao.getAll().size() == 0) {
             Car car;
-            for (int i=0;i <=1000;i++) {
+            for (int i=0;i <=10;i++) {
                 car = (Car) carDao.create();
                 car.setNamePicking("Люкс");
                 car.setColor((Color)colorDao.getByIndex(random.nextInt(colorDao.getCount())));
@@ -268,13 +269,13 @@ public class Main {
                 car.setVin(String.valueOf(random.nextLong()));
                //ThreadLocalRandom.current().nextInt();
 
-//                car.colors = colorDao.getAll();
-//
-//                String[] strings = {"1", "2", "3", "4", "5"};
-//                car.strings = Arrays.asList(strings);
-//
-//                int[] ints = {1, 2, 3, 4, 5};
-//                car.ints = ints;
+                car.colors = colorDao.getAll();
+
+                String[] strings = {"1", "2", "3", "4", "5"};
+                car.strings = Arrays.asList(strings);
+
+                int[] ints = {1, 2, 3, 4, 5};
+                car.ints = ints;
 
                 carDao.add(car);
             }
@@ -285,7 +286,7 @@ public class Main {
         GenericDao busDao = factoryDao.getBusDao();
         if (busDao.getAll().size() == 0) {
             Bus bus;
-            for (int i=0;i <=1000;i++) {
+            for (int i=0;i <=10;i++) {
                 bus = (Bus) busDao.create();
                 bus.setNamePicking("Люкс");
                 bus.setColor((Color)colorDao.getByIndex(random.nextInt(colorDao.getCount())));
@@ -304,7 +305,7 @@ public class Main {
         GenericDao truckDao = factoryDao.getTruckDao();
         if (truckDao.getAll().size() == 0) {
             Truck truck;
-            for (int i=0;i <=1000;i++) {
+            for (int i=0;i <=10;i++) {
                 truck = (Truck) truckDao.create();
                 truck.setNamePicking("Люкс");
                 truck.setNumberAxle(random.nextInt(6) + 2);
@@ -404,7 +405,7 @@ public class Main {
         GenericDao repairDao = factoryDao.getRepairDao();
         if (repairDao.getCount() == 0) {
             Repair repair;
-            for (int i=0; i < 100000; i++) {
+            for (int i=0; i < 10; i++) {
                 repair = (Repair) repairDao.create();
                 repair.setDateTime(new Date());
                 repair.setCarServise((CarService)carServiceDao.getByIndex(random.nextInt(1)));

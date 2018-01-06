@@ -1,0 +1,12 @@
+com.edu.task1.entity.Bus
+{"numberPassengerSeats":25,"numberPassengerStanding":21,"namePicking":"Люкс","vin":"-527899437976540408","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"128 0 255","name":"Фиолетовый"},"mark":{"manufacturer":"Ман"}}
+{"numberPassengerSeats":38,"numberPassengerStanding":36,"namePicking":"Люкс","vin":"6240879392492332202","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"0 255 0","name":"Зеленый"},"mark":{"manufacturer":"ГАЗ"}}
+{"numberPassengerSeats":32,"numberPassengerStanding":20,"namePicking":"Люкс","vin":"-109108059071200872","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"255 128 0","name":"Оранжевый"},"mark":{"manufacturer":"Ман"}}
+{"numberPassengerSeats":32,"numberPassengerStanding":28,"namePicking":"Люкс","vin":"5662124004377325605","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"255 128 0","name":"Оранжевый"},"mark":{"manufacturer":"Камаз"}}
+{"numberPassengerSeats":36,"numberPassengerStanding":25,"namePicking":"Люкс","vin":"9125371230535158387","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"255 0 0","name":"Красный"},"mark":{"manufacturer":"Камаз"}}
+{"numberPassengerSeats":28,"numberPassengerStanding":21,"namePicking":"Люкс","vin":"-1719680246631406428","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"0 255 0","name":"Зеленый"},"mark":{"manufacturer":"Скания"}}
+{"numberPassengerSeats":35,"numberPassengerStanding":26,"namePicking":"Люкс","vin":"-3527035129322306437","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"255 128 0","name":"Оранжевый"},"mark":{"manufacturer":"ГАЗ"}}
+{"numberPassengerSeats":20,"numberPassengerStanding":28,"namePicking":"Люкс","vin":"275994431834906345","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"0 0 255","name":"Синий"},"mark":{"manufacturer":"Татра"}}
+{"numberPassengerSeats":20,"numberPassengerStanding":29,"namePicking":"Люкс","vin":"4909060428784227390","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"0 255 0","name":"Зеленый"},"mark":{"manufacturer":"Камаз"}}
+{"numberPassengerSeats":26,"numberPassengerStanding":23,"namePicking":"Люкс","vin":"-64939671395820058","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"0 255 0","name":"Зеленый"},"mark":{"manufacturer":"Камаз"}}
+{"numberPassengerSeats":35,"numberPassengerStanding":39,"namePicking":"Люкс","vin":"8634528292397779209","releaseYear":"Jan 6, 2018 11:35:08 PM","color":{"rgb":"128 128 128","name":"Серый"},"mark":{"manufacturer":"Скания"}}
