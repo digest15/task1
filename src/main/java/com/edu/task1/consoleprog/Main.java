@@ -22,7 +22,7 @@ public class Main {
 //        fill(factory);
 
         FactoryDao factory = new GsonFactoryDao();
-        fill1(factory);
+        fill(factory);
 
     }
 
