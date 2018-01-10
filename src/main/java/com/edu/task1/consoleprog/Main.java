@@ -12,17 +12,17 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
-//        FactoryDao Factory = new SerializationApiFactoryDao();
-//        fill(Factory);
+//        FactoryDao factory = new SerializationApiFactoryDao();
+//        fill(factory);
 
-//        FactoryDao Factory = new CsvFactoryDao();
-//        fill(Factory);
+//        FactoryDao factory = new CsvFactoryDao();
+//        fill(factory);
 
-//        FactoryDao Factory = new MyTxtFormatSerializationFactoryDao();
-//        fill(Factory);
+//        FactoryDao factory = new MyTxtFormatSerializationFactoryDao();
+//        fill(factory);
 
-        FactoryDao Factory = new GsonFactoryDao();
-        fill1(Factory);
+        FactoryDao factory = new GsonFactoryDao();
+        fill1(factory);
 
     }
 
@@ -269,13 +269,13 @@ public class Main {
                 car.setVin(String.valueOf(random.nextLong()));
                //ThreadLocalRandom.current().nextInt();
 
-                car.colors = colorDao.getAll();
-
-                String[] strings = {"1", "2", "3", "4", "5"};
-                car.strings = Arrays.asList(strings);
-
-                int[] ints = {1, 2, 3, 4, 5};
-                car.ints = ints;
+//                car.colors = colorDao.getAll();
+//
+//                String[] strings = {"1", "2", "3", "4", "5"};
+//                car.strings = Arrays.asList(strings);
+//
+//                int[] ints = {1, 2, 3, 4, 5};
+//                car.ints = ints;
 
                 carDao.add(car);
             }
