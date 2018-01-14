@@ -116,10 +116,10 @@ public class MyTxtFormatSerializationPersisterDao implements PersisterDao {
             String value = fieldValue.get(field.getName());
             if (primitiveTypeList.contains(typeName) ||
                     conteinerPrimitiveTypeList.contains(typeName) ||
-                    typeName == "java.lang.String" ||
-                    typeName == "java.util.Date") {
+                    typeName.equals("java.lang.String") ||
+                    typeName.equals("java.util.Date")) {
                 ReflectionAssistant.setValue(object, value, field);
-            }else if (typeName == "java.util.List") {
+            }else if (typeName.equals("java.util.List")) {
                 List listValue = getListFromString(value);
                 field.set(object, listValue);
             } else {
@@ -310,12 +310,12 @@ public class MyTxtFormatSerializationPersisterDao implements PersisterDao {
 
         if (primitiveTypeList.contains(typeName) ||
                 conteinerPrimityveTypeList.contains(typeName) ||
-                typeName == "java.lang.String" ||
-                typeName == "java.util.Date") {
+                typeName.equals("java.lang.String") ||
+                typeName.equals("java.util.Date")) {
             str += field.get(object).toString();
         } else if (primitiveArrayTypeList.contains(typeName)) {
             str = getPrimitiveArrayAsString(str, field, object);
-        } else if (typeName == "java.util.List") {
+        } else if (typeName.equals("java.util.List")) {
             str = getListAsString(str, field, object);
         } else {
             str = getObjectAsString(str, field.get(object));
