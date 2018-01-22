@@ -1,0 +1,14 @@
+<object-stream>
+  <com.edu.task1.entity.CarService>
+    <name>Александровское</name>
+    <address>г.Иркутск, Александровское шоссе 11 км</address>
+    <openingTime>10</openingTime>
+    <closingTime>20</closingTime>
+  </com.edu.task1.entity.CarService>
+  <com.edu.task1.entity.CarService>
+    <name>На Ширямва</name>
+    <address>г.Иркутск, ул. Ширямова 10</address>
+    <openingTime>9</openingTime>
+    <closingTime>19</closingTime>
+  </com.edu.task1.entity.CarService>
+</object-stream>

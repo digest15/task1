@@ -21,7 +21,10 @@ public class Main {
 //        FactoryDao factory = new MyTxtFormatSerializationFactoryDao();
 //        fill(factory);
 
-        FactoryDao factory = new GsonFactoryDao();
+//        FactoryDao factory = new GsonFactoryDao();
+//        fill(factory);
+
+        FactoryDao factory = new XstreamFactoryDao();
         fill(factory);
 
     }
