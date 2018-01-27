@@ -276,8 +276,8 @@ public class ReportsFunction {
     }
 
     private static class ReportTable {
-        public String time;
-        public String mark;
+        private String time;
+        private String mark;
 
         public ReportTable(String time, String mark) {
             this.time = time;

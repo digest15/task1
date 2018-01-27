@@ -10,13 +10,12 @@ import java.util.GregorianCalendar;
  */
 public class DateHelper{
     private static Calendar calendar = new GregorianCalendar();
-    private static SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy");
 
     public static String fistWeek(Date date) {
         calendar.setTime(date);
-
         Integer dayDifference = calendar.get(Calendar.DAY_OF_WEEK) == 1 ? -6 : (Calendar.MONDAY - calendar.get(Calendar.DAY_OF_WEEK));
         calendar.add(Calendar.DAY_OF_MONTH, dayDifference);
+        SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy");
         String dateFirstDayOfWeek = formattedDate.format(calendar.getTime());
         calendar.add(Calendar.DAY_OF_MONTH, -dayDifference);
 
@@ -30,6 +29,7 @@ public class DateHelper{
         Integer dayDifference = calendar.get(Calendar.DAY_OF_WEEK) == 1 ? -6 : (Calendar.MONDAY - calendar.get(Calendar.DAY_OF_WEEK));
         calendar.add(Calendar.DAY_OF_MONTH, dayDifference);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
+        SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy");
         String dateFirstDayOfMonth = formattedDate.format(calendar.getTime());
         calendar.add(Calendar.DAY_OF_MONTH, -dayDifference);
 
@@ -66,6 +66,7 @@ public class DateHelper{
         calendar.add(Calendar.DAY_OF_MONTH, dayDifference);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         calendar.set(Calendar.MONTH, 0);
+        SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy");
         String dateFirstDayOfYear = formattedDate.format(calendar.getTime());
 
         return dateFirstDayOfYear;
@@ -73,6 +74,7 @@ public class DateHelper{
 
     public static String dateToString(Date date){
         calendar.setTime(date);
+        SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy");
         String dateToday = formattedDate.format(calendar.getTime());
 
         return dateToday;
@@ -81,6 +83,7 @@ public class DateHelper{
     public static String predDate(Date date){
         calendar.setTime(date);
         calendar.add(Calendar.DAY_OF_MONTH, -1);
+        SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.yyyy");
         String dateYesterday = formattedDate.format(calendar.getTime());
 
         return dateYesterday;
