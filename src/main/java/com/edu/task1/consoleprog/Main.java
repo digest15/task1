@@ -1,5 +1,7 @@
 package com.edu.task1.consoleprog;
 
+import com.edu.task1.helpers.DateHelper;
+import com.edu.task1.reports.Reports;
 import com.edu.task1.threads.*;
 import com.edu.task1.dao.*;
 import com.edu.task1.entity.*;
@@ -26,6 +28,8 @@ public class Main {
 
         FactoryDao factory = new XstreamFactoryDao();
         fill(factory);
+
+        Reports.allReportsByRepiarToConsole(factory.getRepairDao(), factory.getCarServiceDao());
 
     }
 
@@ -65,7 +69,7 @@ public class Main {
 
         //CarService
         GenericDao carServiceDao = factoryDao.getCarServiceDao();
-        if (carServiceDao.getAll().size() == 0) {
+        if (carServiceDao.getCount() == 0) {
             //1
             CarService carService = (CarService)carServiceDao.create();
             carService.setAddress("г.Иркутск, Александровское шоссе 11 км");
@@ -88,7 +92,7 @@ public class Main {
 
         //Color
         GenericDao colorDao = factoryDao.getColorDao();
-        if (colorDao.getAll().size() == 0) {
+        if (colorDao.getCount() == 0) {
             //1
             Color color = (Color)colorDao.create();
             color.setName("Красный");
@@ -143,7 +147,7 @@ public class Main {
 
         //Mark
         GenericDao markDao = factoryDao.getMarkDao();
-        if (markDao.getAll().size() == 0) {
+        if (markDao.getCount() == 0) {
             //1
             Mark mark = (Mark)markDao.create();
             mark.setManufacturer("Audi");
@@ -260,9 +264,9 @@ public class Main {
 
         //Car
         GenericDao carDao = factoryDao.getCarDao();
-        if (carDao.getAll().size() == 0) {
+        if (carDao.getCount() == 0) {
             Car car;
-            for (int i=0;i <=10;i++) {
+            for (int i=0;i <=3;i++) {
                 car = (Car) carDao.create();
                 car.setNamePicking("Люкс");
                 car.setColor((Color)colorDao.getByIndex(random.nextInt(colorDao.getCount())));
@@ -287,7 +291,7 @@ public class Main {
 
         //Bus
         GenericDao busDao = factoryDao.getBusDao();
-        if (busDao.getAll().size() == 0) {
+        if (busDao.getCount() == 0) {
             Bus bus;
             for (int i=0;i <=10;i++) {
                 bus = (Bus) busDao.create();
@@ -306,7 +310,7 @@ public class Main {
 
         //Truck
         GenericDao truckDao = factoryDao.getTruckDao();
-        if (truckDao.getAll().size() == 0) {
+        if (truckDao.getCount() == 0) {
             Truck truck;
             for (int i=0;i <=10;i++) {
                 truck = (Truck) truckDao.create();
@@ -324,7 +328,7 @@ public class Main {
 
         //Mechanic
         GenericDao mechanicDao = factoryDao.getMehanicDao();
-        if (mechanicDao.getAll().size() == 0) {
+        if (mechanicDao.getCount() == 0) {
             //1
             Mechanic mechanic = (Mechanic)mechanicDao.create();
             mechanic.setName("Иван");
@@ -402,23 +406,24 @@ public class Main {
 
         ArrayList<Machine> machineList = new ArrayList<>();
         machineList.addAll(carDao.getAll());
-        machineList.addAll(busDao.getAll());
-        machineList.addAll(truckDao.getAll());
+//        machineList.addAll(busDao.getAll());
+//        machineList.addAll(truckDao.getAll());
 
         GenericDao repairDao = factoryDao.getRepairDao();
         if (repairDao.getCount() == 0) {
             Repair repair;
-            for (int i=0; i < 10; i++) {
+            for (int i=0; i < 100; i++) {
                 repair = (Repair) repairDao.create();
-                repair.setDateTime(new Date());
-                repair.setCarServise((CarService)carServiceDao.getByIndex(random.nextInt(1)));
+                repair.setDateTime(DateHelper.randomDate());
+                repair.setCarServise((CarService)carServiceDao.getByIndex(random.nextInt(2)));
                 repair.setMechanic((Mechanic)mechanicDao.getByIndex(random.nextInt(mechanicDao.getCount())));
                 repair.setMachine((Machine) machineList.get(random.nextInt(machineList.size())));
                 repair.setAmount(new BigDecimal(random.nextDouble()));
                 repairDao.add(repair);
             }
-            repairDao.saveToFile();
+            //repairDao.saveToFile();
         }
 
+        Reports.allReportsByRepiarToConsole(repairDao, carServiceDao);
     }
 }

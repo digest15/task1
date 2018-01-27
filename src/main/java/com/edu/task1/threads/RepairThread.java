@@ -6,6 +6,7 @@ import com.edu.task1.entity.CarService;
 import com.edu.task1.entity.Machine;
 import com.edu.task1.entity.Mechanic;
 import com.edu.task1.entity.Repair;
+import com.edu.task1.helpers.DateHelper;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -36,16 +37,16 @@ public class RepairThread extends AbstractEntityThread {
     public void run() {
         if (dao.getCount() == 0) {
             Repair repair;
-            for (int i=0; i < 100000; i++) {
+            for (int i=0; i < 10000; i++) {
                 repair = (Repair) dao.create();
-                repair.setDateTime(new Date());
-                repair.setCarServise((CarService)carServiceDao.getByIndex(random.nextInt(1)));
+                repair.setDateTime(DateHelper.randomDate());
+                repair.setCarServise((CarService)carServiceDao.getByIndex(random.nextInt(2)));
                 repair.setMechanic((Mechanic)mechanicDao.getByIndex(random.nextInt(mechanicDao.getCount())));
                 repair.setMachine((Machine) machineList.get(random.nextInt(machineList.size())));
                 repair.setAmount(new BigDecimal(random.nextDouble()));
                 dao.add(repair);
             }
-            dao.saveToFile();
+            //dao.saveToFile();
         }
     }
 }

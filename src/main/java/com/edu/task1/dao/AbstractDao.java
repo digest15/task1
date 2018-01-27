@@ -1,5 +1,6 @@
 package com.edu.task1.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractDao<T> implements GenericDao<T> {
@@ -44,7 +45,7 @@ public abstract class AbstractDao<T> implements GenericDao<T> {
 
     @Override
     public List<T> getAll() {
-        return list;
+        return new ArrayList<T>(list);
     }
 
     public void saveToFile() {

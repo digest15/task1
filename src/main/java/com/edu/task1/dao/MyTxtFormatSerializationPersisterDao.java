@@ -1,5 +1,7 @@
 package com.edu.task1.dao;
 
+import com.edu.task1.helpers.ReflectionHelper;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -24,7 +26,7 @@ public class MyTxtFormatSerializationPersisterDao implements PersisterDao {
 
         Class listClass = list.get(0).getClass();
         List<Field> fields = new ArrayList<>();
-        fields = ReflectionAssistant.getAllFields(listClass, fields);
+        fields = ReflectionHelper.getAllFields(listClass, fields);
 
         try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(catalogName, subCatalogName, fileName))) {
             writer.write(listClass.getName().concat("\n"));
@@ -101,14 +103,14 @@ public class MyTxtFormatSerializationPersisterDao implements PersisterDao {
 
         Class entityClass = Class.forName(className);
         List<Field> fields = new ArrayList<>();
-        fields = ReflectionAssistant.getAllFields(entityClass, fields);
+        fields = ReflectionHelper.getAllFields(entityClass, fields);
         Object object = entityClass.newInstance();
 
         Map<String, String> fieldValue = parseString(str);
 
-        List<String> primitiveTypeList = ReflectionAssistant.getPrimitiveTypeAsString(false);
-        List<String> primitiveArrayTypeList = ReflectionAssistant.getPrimitiveTypeAsString(true);
-        List<String> conteinerPrimitiveTypeList = ReflectionAssistant.getConteinerPrimitiveTypeAsString();
+        List<String> primitiveTypeList = ReflectionHelper.getPrimitiveTypeAsString(false);
+        List<String> primitiveArrayTypeList = ReflectionHelper.getPrimitiveTypeAsString(true);
+        List<String> conteinerPrimitiveTypeList = ReflectionHelper.getConteinerPrimitiveTypeAsString();
 
         for (Field field : fields) {
             field.setAccessible(true);
@@ -118,7 +120,7 @@ public class MyTxtFormatSerializationPersisterDao implements PersisterDao {
                     conteinerPrimitiveTypeList.contains(typeName) ||
                     typeName.equals("java.lang.String") ||
                     typeName.equals("java.util.Date")) {
-                ReflectionAssistant.setValue(object, value, field);
+                ReflectionHelper.setValue(object, value, field);
             }else if (typeName.equals("java.util.List")) {
                 List listValue = getListFromString(value);
                 field.set(object, listValue);
@@ -187,7 +189,7 @@ public class MyTxtFormatSerializationPersisterDao implements PersisterDao {
                 break;
             case "java.util.Date":
                 for (String value : listStrings) {
-                    list.add(ReflectionAssistant.parseValueToDate(value));
+                    list.add(ReflectionHelper.parseValueToDate(value));
                 }
                 break;
             case "java.util.List":
@@ -304,9 +306,9 @@ public class MyTxtFormatSerializationPersisterDao implements PersisterDao {
         field.setAccessible(true);
         String typeName = field.getType().getTypeName();
 
-        List<String> primitiveTypeList = ReflectionAssistant.getPrimitiveTypeAsString(false);
-        List<String> primitiveArrayTypeList = ReflectionAssistant.getPrimitiveTypeAsString(true);
-        List<String> conteinerPrimityveTypeList = ReflectionAssistant.getConteinerPrimitiveTypeAsString();
+        List<String> primitiveTypeList = ReflectionHelper.getPrimitiveTypeAsString(false);
+        List<String> primitiveArrayTypeList = ReflectionHelper.getPrimitiveTypeAsString(true);
+        List<String> conteinerPrimityveTypeList = ReflectionHelper.getConteinerPrimitiveTypeAsString();
 
         if (primitiveTypeList.contains(typeName) ||
                 conteinerPrimityveTypeList.contains(typeName) ||
@@ -362,7 +364,7 @@ public class MyTxtFormatSerializationPersisterDao implements PersisterDao {
 
         Class itemClass = object.getClass();
         List<Field> fields = new ArrayList<>();
-        fields = ReflectionAssistant.getAllFields(itemClass, fields);
+        fields = ReflectionHelper.getAllFields(itemClass, fields);
 
         for (Field subField : fields) {
             str = getValueAsString(str, subField, object);

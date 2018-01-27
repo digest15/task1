@@ -6,44 +6,79 @@ package com.edu.task1.dao;
 public abstract class AbstractFactoryDao implements FactoryDao {
     protected PersisterDao persister;
 
+    private CarServiceDao carServiceDao;
+    private ColorDao colorDao;
+    private CarDao carDao;
+    private BusDao busDao;
+    private TruckDao truckDao;
+    private MarkDao markDao;
+    private MehanicDao mehanicDao;
+    private RepairDao repairDao;
+
     @Override
+
     public CarServiceDao getCarServiceDao() {
-        return new CarServiceDao(persister);
+        if (carServiceDao == null) {
+            carServiceDao = new CarServiceDao(persister);
+        }
+        return carServiceDao;
     }
 
     @Override
     public ColorDao getColorDao() {
-        return new ColorDao(persister);
+        if (colorDao == null) {
+            colorDao = new ColorDao(persister);
+        }
+        return colorDao;
     }
 
     @Override
     public CarDao getCarDao() {
-        return new CarDao(persister);
+        if (carDao == null) {
+            carDao = new CarDao(persister);
+        }
+        return carDao;
+
     }
 
     @Override
     public BusDao getBusDao() {
-        return new BusDao(persister);
+        if (busDao == null) {
+            busDao = new BusDao(persister);
+        }
+        return busDao;
     }
 
     @Override
     public TruckDao getTruckDao() {
-        return new TruckDao(persister);
+        if (truckDao == null) {
+            truckDao = new TruckDao(persister);
+        }
+        return truckDao;
     }
 
     @Override
     public MarkDao getMarkDao() {
-        return new MarkDao(persister);
+        if (markDao == null) {
+            markDao = new MarkDao(persister);
+        }
+        return markDao;
     }
 
     @Override
     public MehanicDao getMehanicDao() {
-        return new MehanicDao(persister);
+        if (mehanicDao == null) {
+            mehanicDao = new MehanicDao(persister);
+        }
+        return mehanicDao;
     }
 
     @Override
     public RepairDao getRepairDao() {
-        return new RepairDao(persister);
+        if (repairDao == null) {
+            repairDao = new RepairDao(persister);
+        }
+        return repairDao;
     }
 
 }

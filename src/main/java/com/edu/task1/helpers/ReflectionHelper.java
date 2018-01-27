@@ -1,4 +1,4 @@
-package com.edu.task1.dao;
+package com.edu.task1.helpers;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Created by damager on 24.12.17.
  */
-public class ReflectionAssistant {
+public class ReflectionHelper {
     public static List getAllFields(Class clazz, List list) {
         Field[] fields = clazz.getDeclaredFields();
         list.addAll(Arrays.asList(fields));

@@ -1,6 +1,8 @@
 package com.edu.task1.dao;
 
 
+import com.edu.task1.helpers.ReflectionHelper;
+
 import java.io.*;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
@@ -22,7 +24,7 @@ public class CsvPersisterDAO implements PersisterDao {
 
         Class listClass = list.get(0).getClass();
         List<Field> fields = new ArrayList<>();
-        fields = ReflectionAssistant.getAllFields(listClass, fields);
+        fields = ReflectionHelper.getAllFields(listClass, fields);
 
         int fieldCount = fields.size();
         String[] arrField = new String[fieldCount];
@@ -65,7 +67,7 @@ public class CsvPersisterDAO implements PersisterDao {
             String className = arrStr.get(0).replace("\n", "");
             Class entityClass = Class.forName(className);
             List<Field> fields = new ArrayList<>();
-            fields = ReflectionAssistant.getAllFields(entityClass, fields);
+            fields = ReflectionHelper.getAllFields(entityClass, fields);
 
             String[] arrField = arrStr.get(1).split(";");
             arrStr.remove(0);
@@ -77,7 +79,7 @@ public class CsvPersisterDAO implements PersisterDao {
                 String[] subStr = line.split(";");
                 for (int i = 0; i <= arrField.length - 1; i++) {
                     Field field = fields.get(i);
-                    ReflectionAssistant.setValue(entityObject, subStr[i], field);
+                    ReflectionHelper.setValue(entityObject, subStr[i], field);
                 }
 
                 list.add(entityObject);
