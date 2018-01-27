@@ -4,8 +4,10 @@ import com.edu.task1.entity.*;
 import com.edu.task1.helpers.DateHelper;
 import com.google.common.collect.*;
 import com.google.common.primitives.Ints;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -32,20 +34,18 @@ public class ReportsFunction {
         @Override
         public String apply(Object o) {
             Repair repair = (Repair) o;
+            StringBuilder str = new StringBuilder("Date: ").append(repair.getDateTime()).append("\n");
 
-            String str = "Date: " + repair.getDateTime() + "\n";
-
-            str += "Car Service: " + repair.getCarServise().getName() + "\n";
+            str.append("Car Service: ").append(repair.getCarServise().getName()).append("\n");
 
             Machine machine = repair.getMachine();
-            str += "Machine: " + machine.getMark().getManufacturer() + "; " + machine.getColor().getName() + "; " + machine.getVin() + "; " + "\n";
+            str.append("Machine: ").append(machine.getMark().getManufacturer()).append("; ").append(machine.getColor().getName());
+            str.append("; ").append(machine.getVin()).append("; \n");
 
             Mechanic mechanic = repair.getMechanic();
-            str += "Mechanic: " + mechanic.getName() + "\n";
-
-            str += "Amount: " + repair.getAmount() + "\n";
-
-            return str;
+            str.append("Mechanic: ").append(mechanic.getName()).append("\n");
+            str.append("Amount: ").append(repair.getAmount()).append("\n");
+            return str.toString();
         }
     };
 
@@ -69,11 +69,11 @@ public class ReportsFunction {
         @Override
         public String apply(Object o) {
             Map.Entry<Machine, Integer> entry = (Map.Entry<Machine, Integer>) o;
-
+            //StringBuilder
             Machine machine = entry.getKey();
             String str = "Марка: " + machine.getMark().getManufacturer() + "\n";
             str += "VIN: " + machine.getVin() + "\n";
-            str += "Колво поломок: " + Integer.valueOf(entry.getValue()) + "\n";
+            str += "Колво поломок: " + Integer.valueOf(entry.getValue());
 
             return str;
         }
@@ -85,7 +85,7 @@ public class ReportsFunction {
             Multiset.Entry<Mark> entry = (Multiset.Entry<Mark>) o;
 
             String str = entry.getElement().getManufacturer() + ", Количество поломок: ";
-            str += Integer.valueOf(entry.getCount()) + "\n";
+            str += Integer.valueOf(entry.getCount());
 
             return str;
         }
@@ -95,11 +95,10 @@ public class ReportsFunction {
         @Override
         public String apply(Object o) {
             Map.Entry<String, BigDecimal> entry = (Map.Entry<String, BigDecimal>) o;
-
-            String str = entry.getKey() + ", Сумма: ";
-            str += entry.getValue().toString() + "\n";
-
-            return str;
+            StringBuilder stringBuilder = new StringBuilder(entry.getKey());
+            stringBuilder.append(", Сумма: ");
+            stringBuilder.append(getBigDecimalValue(entry.getValue()));
+            return stringBuilder.toString();
         }
     };
 
@@ -107,11 +106,11 @@ public class ReportsFunction {
         @Override
         public String apply(Object o) {
             Map.Entry<ReportTable, BigDecimal> entry = (Map.Entry<ReportTable, BigDecimal>) o;
+            StringBuilder stringBuilder = new StringBuilder(entry.getKey().toString());
+            stringBuilder.append(", Сумма: ");
+            stringBuilder.append(getBigDecimalValue(entry.getValue()));
 
-            String str = entry.getKey() + ", Сумма: ";
-            str += entry.getValue().toString() + "\n";
-
-            return str;
+            return stringBuilder.toString();
         }
     };
 
@@ -149,8 +148,10 @@ public class ReportsFunction {
     }
 
     public static void oftenBreakingCar(List<Repair> listRepair, String reportTitle, Consumer<String> printTo) {
+        if(CollectionUtils.isEmpty(listRepair))
+            return;
 
-        List<Machine> machineList = new ArrayList();
+        List<Machine> machineList = new ArrayList<>(listRepair.size());
         for (Repair repiar : listRepair) {
             machineList.add(repiar.getMachine());
         }
@@ -233,6 +234,7 @@ public class ReportsFunction {
         Collections.sort(listSummaByMarks, new Comparator<Map.Entry<ReportTable, BigDecimal>>() {
             @Override
             public int compare(Map.Entry<ReportTable, BigDecimal> o1, Map.Entry<ReportTable, BigDecimal> o2) {
+                if(o1 == o2) return 0;
                 return o1.getKey().hashCode() - o2.getKey().hashCode();
             }
         });
@@ -305,5 +307,15 @@ public class ReportsFunction {
             result = 31 * result + (mark != null ? mark.hashCode() : 0);
             return result;
         }
-    };
+    }
+
+    ;
+
+    private static String getBigDecimalValue(BigDecimal input) {
+        final NumberFormat numberFormat = NumberFormat.getNumberInstance();
+        numberFormat.setGroupingUsed(true);
+        numberFormat.setMaximumFractionDigits(2);
+        numberFormat.setMinimumFractionDigits(4);
+        return numberFormat.format(input);
+    }
 }

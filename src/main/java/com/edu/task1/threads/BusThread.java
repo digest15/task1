@@ -37,7 +37,7 @@ public class BusThread extends AbstractEntityThread {
                 bus.setNumberPassengerStanding(random.nextInt(20) + 20);
                 bus.setMark((Mark)markDao.getByIndex(random.nextInt(7)+15)); //Только грузовые и автобусы
                 bus.setReleaseYear(new Date());
-                bus.setVin(String.valueOf(random.nextLong()));
+                bus.setVin(String.valueOf(Math.abs(random.nextLong())));
                 //ThreadLocalRandom.current().nextInt();
                 dao.add(bus);
             }

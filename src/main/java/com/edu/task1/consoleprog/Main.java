@@ -273,7 +273,7 @@ public class Main {
                 car.setNumberPassengerSeats(5);
                 car.setMark((Mark)markDao.getByIndex(random.nextInt(markDao.getCount() - 7))); //Только легковые марки
                 car.setReleaseYear(new Date());
-                car.setVin(String.valueOf(random.nextLong()));
+                car.setVin(String.valueOf(Math.abs(random.nextLong())));
                //ThreadLocalRandom.current().nextInt();
 
 //                car.colors = colorDao.getAll();
@@ -301,7 +301,7 @@ public class Main {
                 bus.setNumberPassengerStanding(random.nextInt(20) + 20);
                 bus.setMark((Mark)markDao.getByIndex(random.nextInt(7)+15)); //Только грузовые и автобусы
                 bus.setReleaseYear(new Date());
-                bus.setVin(String.valueOf(random.nextLong()));
+                bus.setVin(String.valueOf(Math.abs(random.nextLong())));
                 //ThreadLocalRandom.current().nextInt();
                 busDao.add(bus);
             }
@@ -319,7 +319,7 @@ public class Main {
                 truck.setColor((Color)colorDao.getByIndex(random.nextInt(colorDao.getCount())));
                 truck.setMark((Mark)markDao.getByIndex(random.nextInt(7)+15)); //Только грузовые и автобусы
                 truck.setReleaseYear(new Date());
-                truck.setVin(String.valueOf(random.nextLong()));
+                truck.setVin(String.valueOf(Math.abs(random.nextLong())));
                 //ThreadLocalRandom.current().nextInt();
                 truckDao.add(truck);
             }
@@ -418,7 +418,7 @@ public class Main {
                 repair.setCarServise((CarService)carServiceDao.getByIndex(random.nextInt(2)));
                 repair.setMechanic((Mechanic)mechanicDao.getByIndex(random.nextInt(mechanicDao.getCount())));
                 repair.setMachine((Machine) machineList.get(random.nextInt(machineList.size())));
-                repair.setAmount(new BigDecimal(random.nextDouble()));
+                repair.setAmount(new BigDecimal(random.nextDouble() * random.nextInt(10000)));
                 repairDao.add(repair);
             }
             //repairDao.saveToFile();

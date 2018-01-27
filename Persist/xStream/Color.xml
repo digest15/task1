@@ -1,0 +1,34 @@
+<object-stream>
+  <com.edu.task1.entity.Color>
+    <rgb>255 0 0</rgb>
+    <name>Красный</name>
+  </com.edu.task1.entity.Color>
+  <com.edu.task1.entity.Color>
+    <rgb>255 128 0</rgb>
+    <name>Оранжевый</name>
+  </com.edu.task1.entity.Color>
+  <com.edu.task1.entity.Color>
+    <rgb>0 0 255</rgb>
+    <name>Синий</name>
+  </com.edu.task1.entity.Color>
+  <com.edu.task1.entity.Color>
+    <rgb>128 0 255</rgb>
+    <name>Фиолетовый</name>
+  </com.edu.task1.entity.Color>
+  <com.edu.task1.entity.Color>
+    <rgb>255 255 255</rgb>
+    <name>Белый</name>
+  </com.edu.task1.entity.Color>
+  <com.edu.task1.entity.Color>
+    <rgb>0 0 0</rgb>
+    <name>Черный</name>
+  </com.edu.task1.entity.Color>
+  <com.edu.task1.entity.Color>
+    <rgb>128 128 128</rgb>
+    <name>Серый</name>
+  </com.edu.task1.entity.Color>
+  <com.edu.task1.entity.Color>
+    <rgb>0 255 0</rgb>
+    <name>Зеленый</name>
+  </com.edu.task1.entity.Color>
+</object-stream>

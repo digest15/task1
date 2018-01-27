@@ -37,7 +37,7 @@ public class TruckThread extends AbstractEntityThread {
                 truck.setColor((Color)colorDao.getByIndex(random.nextInt(colorDao.getCount())));
                 truck.setMark((Mark)markDao.getByIndex(random.nextInt(7)+15)); //Только грузовые и автобусы
                 truck.setReleaseYear(new Date());
-                truck.setVin(String.valueOf(random.nextLong()));
+                truck.setVin(String.valueOf(Math.abs(random.nextLong())));
                 //ThreadLocalRandom.current().nextInt();
                 dao.add(truck);
             }

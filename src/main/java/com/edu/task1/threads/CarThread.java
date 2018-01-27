@@ -36,7 +36,7 @@ public class CarThread extends AbstractEntityThread {
                 car.setNumberPassengerSeats(5);
                 car.setMark((Mark)markDao.getByIndex(random.nextInt(markDao.getCount() - 7))); //Только легковые марки
                 car.setReleaseYear(new Date());
-                car.setVin(String.valueOf(random.nextLong()));
+                car.setVin(String.valueOf(Math.abs(random.nextLong())));
                 //ThreadLocalRandom.current().nextInt();
                 dao.add(car);
             }

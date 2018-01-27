@@ -43,7 +43,7 @@ public class RepairThread extends AbstractEntityThread {
                 repair.setCarServise((CarService)carServiceDao.getByIndex(random.nextInt(2)));
                 repair.setMechanic((Mechanic)mechanicDao.getByIndex(random.nextInt(mechanicDao.getCount())));
                 repair.setMachine((Machine) machineList.get(random.nextInt(machineList.size())));
-                repair.setAmount(new BigDecimal(random.nextDouble()));
+                repair.setAmount(new BigDecimal(random.nextDouble() * random.nextInt(10000)));
                 dao.add(repair);
             }
             //dao.saveToFile();
