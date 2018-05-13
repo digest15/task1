@@ -1,7 +1,10 @@
 package com.edu.task1.consoleprog;
 
 import com.edu.task1.helpers.DateHelper;
-import com.edu.task1.reports.Reports;
+import com.edu.task1.reports.*;
+import com.edu.task1.reports.Print.PrintToConsole;
+import com.edu.task1.reports.Print.PrintToPdf;
+import com.edu.task1.reports.Print.ReportPrintable;
 import com.edu.task1.threads.*;
 import com.edu.task1.dao.*;
 import com.edu.task1.entity.*;
@@ -27,10 +30,53 @@ public class Main {
 //        fill(factory);
 
         FactoryDao factory = new XstreamFactoryDao();
-        fill(factory);
+        fill1(factory);
 
-        Reports.allReportsByRepiarToConsole(factory.getRepairDao(), factory.getCarServiceDao());
+        ReportPrintable printerToConsole = new PrintToConsole();
+        ReportPrintable printerToPdf = new PrintToPdf();
 
+        Reportable repairByDateEndAmount = new RepairByDateEndAmount(factory.getRepairDao().getAll());
+        repairByDateEndAmount.execute();
+        printerToConsole.print(repairByDateEndAmount);
+        printerToPdf.print(repairByDateEndAmount);
+
+
+        Reportable repairByDateEndAmountRev = new RepairByDateEndAmount(factory.getRepairDao().getAll());
+        repairByDateEndAmountRev.setTitle("Ремонты отсортированные по дате, по стоимости. По убыванию стоимости");
+        ((RepairByDateEndAmount) repairByDateEndAmountRev).setCompareByAmount(ReportsFunction.comparators_repair.BY_AMOUNT.reversed());
+        repairByDateEndAmountRev.execute();
+        printerToConsole.print(repairByDateEndAmountRev);
+        printerToPdf.print(repairByDateEndAmountRev);
+
+        Reportable oftenBreakingCar = new OftenBreakingCar(factory.getRepairDao().getAll());
+        oftenBreakingCar.execute();
+        printerToConsole.print(oftenBreakingCar);
+        printerToPdf.print(oftenBreakingCar);
+
+        Reportable oftenBreakingMark = new OftenBreakingMark(factory.getRepairDao().getAll());
+        oftenBreakingMark.execute();
+        printerToConsole.print(oftenBreakingMark);
+        printerToPdf.print(oftenBreakingMark);
+
+        Reportable summaByMark = new SummaByMark(factory.getRepairDao().getAll());
+        summaByMark.execute();
+        printerToConsole.print(summaByMark);
+        printerToPdf.print(summaByMark);
+
+        Reportable revenuesForQuarter = new RevenuesForQuarter(factory.getRepairDao().getAll());
+        revenuesForQuarter.execute();
+        printerToConsole.print(revenuesForQuarter);
+        printerToPdf.print(revenuesForQuarter);
+
+        Reportable summaByMarkForQuarter = new SummaByMarkForQuarter(factory.getRepairDao().getAll());
+        summaByMarkForQuarter.execute();
+        printerToConsole.print(summaByMarkForQuarter);
+        printerToPdf.print(summaByMarkForQuarter);
+
+        Reportable workerOfServise = new WorkerOfServise(factory.getRepairDao().getAll());
+        workerOfServise.execute();
+        printerToConsole.print(workerOfServise);
+        printerToPdf.print(workerOfServise);
     }
 
     private static void fill(FactoryDao factoryDao) {
@@ -273,7 +319,7 @@ public class Main {
                 car.setNumberPassengerSeats(5);
                 car.setMark((Mark)markDao.getByIndex(random.nextInt(markDao.getCount() - 7))); //Только легковые марки
                 car.setReleaseYear(new Date());
-                car.setVin(String.valueOf(Math.abs(random.nextLong())));
+                car.setVin(String.valueOf(random.nextLong()));
                //ThreadLocalRandom.current().nextInt();
 
 //                car.colors = colorDao.getAll();
@@ -301,7 +347,7 @@ public class Main {
                 bus.setNumberPassengerStanding(random.nextInt(20) + 20);
                 bus.setMark((Mark)markDao.getByIndex(random.nextInt(7)+15)); //Только грузовые и автобусы
                 bus.setReleaseYear(new Date());
-                bus.setVin(String.valueOf(Math.abs(random.nextLong())));
+                bus.setVin(String.valueOf(random.nextLong()));
                 //ThreadLocalRandom.current().nextInt();
                 busDao.add(bus);
             }
@@ -319,7 +365,7 @@ public class Main {
                 truck.setColor((Color)colorDao.getByIndex(random.nextInt(colorDao.getCount())));
                 truck.setMark((Mark)markDao.getByIndex(random.nextInt(7)+15)); //Только грузовые и автобусы
                 truck.setReleaseYear(new Date());
-                truck.setVin(String.valueOf(Math.abs(random.nextLong())));
+                truck.setVin(String.valueOf(random.nextLong()));
                 //ThreadLocalRandom.current().nextInt();
                 truckDao.add(truck);
             }
@@ -412,18 +458,16 @@ public class Main {
         GenericDao repairDao = factoryDao.getRepairDao();
         if (repairDao.getCount() == 0) {
             Repair repair;
-            for (int i=0; i < 100; i++) {
+            for (int i=0; i < 10; i++) {
                 repair = (Repair) repairDao.create();
                 repair.setDateTime(DateHelper.randomDate());
                 repair.setCarServise((CarService)carServiceDao.getByIndex(random.nextInt(2)));
                 repair.setMechanic((Mechanic)mechanicDao.getByIndex(random.nextInt(mechanicDao.getCount())));
                 repair.setMachine((Machine) machineList.get(random.nextInt(machineList.size())));
-                repair.setAmount(new BigDecimal(random.nextDouble() * random.nextInt(10000)));
+                repair.setAmount(new BigDecimal(random.nextDouble()));
                 repairDao.add(repair);
             }
             //repairDao.saveToFile();
         }
-
-        Reports.allReportsByRepiarToConsole(repairDao, carServiceDao);
     }
 }
